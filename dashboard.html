@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard administrativo - NutriPet">
+    <title>Dashboard - NutriPet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Header Dashboard -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>NutriPet</span>
+                    <span class="dashboard-label">Dashboard</span>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-details">
+                            <span class="user-name" id="userName">Carregando...</span>
+                            <span class="user-role" id="userRole">...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="header-buttons">
+                        <a href="index.html" class="btn-site" >
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Ver Site</span>
+                        </a>
+                        <button class="btn-logout" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sair</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href="#dashboard" class="nav-link" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#agendamentos" class="nav-link" data-section="agendamentos">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Agendamentos</span>
+                        <span class="badge" id="agendamentos-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#clientes" class="nav-link" data-section="clientes">
+                        <i class="fas fa-users"></i>
+                        <span>Clientes</span>
+                        <span class="badge" id="clientes-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#animais" class="nav-link" data-section="animais">
+                        <i class="fas fa-paw"></i>
+                        <span>Animais</span>
+                        <span class="badge" id="animais-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contatos" class="nav-link" data-section="contatos">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contatos</span>
+                        <span class="badge" id="contatos-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item admin-only">
+                    <a href="#usuarios" class="nav-link" data-section="usuarios">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Usuários</span>
+                    </a>
+                </li>
+                <li class="nav-item admin-only">
+                    <a href="#configuracoes" class="nav-link" data-section="configuracoes">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Dashboard Overview -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="section-header">
+                    <h1>Dashboard</h1>
+                    <p>Visão geral do sistema NutriPet</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-agendamentos">0</h3>
+                            <p>Agendamentos Hoje</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-clientes">0</h3>
+                            <p>Clientes Ativos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-animais">0</h3>
+                            <p>Animais Cadastrados</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-contatos">0</h3>
+                            <p>Mensagens Pendentes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-widgets">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3>Próximos Agendamentos</h3>
+                            <button class="btn-widget" onclick="showSection('agendamentos')">Ver Todos</button>
+                        </div>
+                        <div class="widget-content" id="proximos-agendamentos">
+                            <p class="no-data">Nenhum agendamento para hoje</p>
+                        </div>
+                    </div>
+                    
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3>Mensagens Recentes</h3>
+                            <button class="btn-widget" onclick="showSection('contatos')">Ver Todas</button>
+                        </div>
+                        <div class="widget-content" id="mensagens-recentes">
+                            <p class="no-data">Nenhuma mensagem recente</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agendamentos -->
+            <section id="agendamentos-section" class="content-section">
+                <div class="section-header">
+                    <h1>Agendamentos</h1>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" onclick="openModal('agendamento-modal')">
+                            <i class="fas fa-plus"></i>
+                            Novo Agendamento
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" id="agendamentos-table">
+                        <thead>
+                            <tr>
+                                <th>Data/Hora</th>
+                                <th>Cliente</th>
+                                <th>Animal</th>
+                                <th>Serviço</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="no-data-row">
+                                <td colspan="6">Nenhum agendamento encontrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Clientes -->
+           <!-- Clientes -->
+<section id="clientes-section" class="content-section">
+    <div class="section-header">
+        <div>
+            <h1>Clientes</h1>
+            <p>Gerencie todos os clientes cadastrados</p>
+        </div>
+        <div class="section-actions">
+            <div class="search-box">
+                <input type="text" id="cliente-search" placeholder="Buscar cliente...">
+                <i class="fas fa-search"></i>
+            </div>
+            <button class="btn btn-primary" onclick="openClienteModal()">
+                <i class="fas fa-plus"></i>
+                Novo Cliente
+            </button>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table" id="clientes-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Cidade</th>
+                    <th>Animais</th>
+                    <th>Status</th>
+                    <th>Cadastro</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="no-data-row">
+                    <td colspan="8">Nenhum cliente encontrado</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+            <!-- Animais -->
+            <section id="animais-section" class="content-section">
+                <div class="section-header">
+                    <h1>Animais</h1>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" onclick="openModal('animal-modal')">
+                            <i class="fas fa-plus"></i>
+                            Novo Animal
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" id="animais-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Tipo</th>
+                                <th>Raça</th>
+                                <th>Idade</th>
+                                <th>Tutor</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="no-data-row">
+                                <td colspan="6">Nenhum animal encontrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Contatos -->
+            <section id="contatos-section" class="content-section">
+                <div class="section-header">
+                    <h1>Mensagens de Contato</h1>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary" onclick="exportContacts()">
+                            <i class="fas fa-download"></i>
+                            Exportar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" id="contatos-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Serviço</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="no-data-row">
+                                <td colspan="7">Nenhuma mensagem encontrada</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Modal Agendamento -->
+    <div id="agendamento-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Novo Agendamento</h2>
+                <button class="modal-close" onclick="closeModal('agendamento-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="agendamento-form" class="modal-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="agend-cliente">Cliente</label>
+                        <select id="agend-cliente" name="cliente" required>
+                            <option value="">Selecione um cliente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="agend-animal">Animal</label>
+                        <select id="agend-animal" name="animal" required>
+                            <option value="">Selecione um animal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="agend-data">Data</label>
+                        <input type="date" id="agend-data" name="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="agend-hora">Hora</label>
+                        <input type="time" id="agend-hora" name="hora" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="agend-servico">Serviço</label>
+                    <select id="agend-servico" name="servico" required>
+                        <option value="">Selecione um serviço</option>
+                        <option value="consulta">Consulta Nutricional</option>
+                        <option value="natural">Alimentação Natural</option>
+                        <option value="mista">Alimentação Mista</option>
+                        <option value="comercial">Alimentação Comercial</option>
+                        <option value="emagrecimento">Programa de Emagrecimento</option>
+                        <option value="dietas-coadjuvantes">Dietas Coadjuvantes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="agend-observacoes">Observações</label>
+                    <textarea id="agend-observacoes" name="observacoes" rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('agendamento-modal')">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Salvar Agendamento
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Cliente -->
+    <!-- Modal Cliente -->
+<div id="cliente-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="cliente-modal-title">Novo Cliente</h2>
+            <button class="modal-close" onclick="closeModal('cliente-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form id="cliente-form" class="modal-form">
+            <input type="hidden" id="cliente-id" name="id">
+            
+            <!-- Informações Pessoais -->
+            <div class="form-section">
+                <h3><i class="fas fa-user"></i> Informações Pessoais</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cliente-nome">Nome Completo *</label>
+                        <input type="text" id="cliente-nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-cpf">CPF</label>
+                        <input type="text" id="cliente-cpf" name="cpf" placeholder="000.000.000-00">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cliente-nascimento">Data de Nascimento</label>
+                        <input type="date" id="cliente-nascimento" name="nascimento">
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-profissao">Profissão</label>
+                        <input type="text" id="cliente-profissao" name="profissao">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contato -->
+            <div class="form-section">
+                <h3><i class="fas fa-phone"></i> Contato</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cliente-email">E-mail *</label>
+                        <input type="email" id="cliente-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-telefone">Telefone *</label>
+                        <input type="tel" id="cliente-telefone" name="telefone" required placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cliente-telefone2">Telefone Alternativo</label>
+                    <input type="tel" id="cliente-telefone2" name="telefone2" placeholder="(00) 00000-0000">
+                </div>
+            </div>
+
+            <!-- Endereço -->
+            <div class="form-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cliente-cep">CEP</label>
+                        <input type="text" id="cliente-cep" name="cep" placeholder="00000-000">
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-cidade">Cidade</label>
+                        <input type="text" id="cliente-cidade" name="cidade">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cliente-bairro">Bairro</label>
+                        <input type="text" id="cliente-bairro" name="bairro">
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-estado">Estado</label>
+                        <select id="cliente-estado" name="estado">
+                            <option value="">Selecione</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cliente-endereco">Rua/Avenida</label>
+                    <input type="text" id="cliente-endereco" name="endereco" placeholder="Rua, número, complemento">
+                </div>
+            </div>
+
+            <!-- Informações Adicionais -->
+            <div class="form-section">
+                <h3><i class="fas fa-clipboard"></i> Informações Adicionais</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cliente-como-conheceu">Como nos conheceu?</label>
+                        <select id="cliente-como-conheceu" name="como_conheceu">
+                            <option value="">Selecione</option>
+                            <option value="google">Google</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="indicacao">Indicação</option>
+                            <option value="veterinario">Veterinário</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-status">Status</label>
+                        <select id="cliente-status" name="status">
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                            <option value="prospecto">Prospecto</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cliente-observacoes">Observações</label>
+                    <textarea id="cliente-observacoes" name="observacoes" rows="3" placeholder="Informações importantes sobre o cliente..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('cliente-modal')">
+                    <i class="fas fa-times"></i>
+                    Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    <span id="cliente-btn-text">Salvar Cliente</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <!-- Modal Animal -->
+    <div id="animal-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Novo Animal</h2>
+                <button class="modal-close" onclick="closeModal('animal-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="animal-form" class="modal-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="animal-nome">Nome do Animal</label>
+                        <input type="text" id="animal-nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="animal-tutor">Tutor</label>
+                        <select id="animal-tutor" name="tutor" required>
+                            <option value="">Selecione um cliente</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="animal-tipo">Tipo</label>
+                        <select id="animal-tipo" name="tipo" required>
+                            <option value="">Selecione</option>
+                            <option value="cao">Cão</option>
+                            <option value="gato">Gato</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="animal-raca">Raça</label>
+                        <input type="text" id="animal-raca" name="raca">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="animal-nascimento">Data de Nascimento</label>
+                        <input type="date" id="animal-nascimento" name="nascimento">
+                    </div>
+                    <div class="form-group">
+                        <label for="animal-peso">Peso (kg)</label>
+                        <input type="number" id="animal-peso" name="peso" step="0.1" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="animal-observacoes">Observações Médicas</label>
+                    <textarea id="animal-observacoes" name="observacoes" rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('animal-modal')">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Salvar Animal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
