@@ -487,9 +487,12 @@ function setupModals() {
     setupAgendamentoForm();
     setupClienteForm();
     setupAnimalForm();
+    setupUsuarioForm();
+   
+    initializeConfiguracoes(); // Adicionar esta linha
 
-    // Fechar modal ao clicar fora
-    document.querySelectorAll('.modal').forEach(modal => {
+
+       document.querySelectorAll('.modal').forEach(modal => {
         modal.addEventListener('click', function (e) {
             if (e.target === this) {
                 closeModal(this.id);

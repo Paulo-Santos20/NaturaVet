@@ -1,0 +1,691 @@
+/* ===== CONFIGURAÇÕES - CSS CORRIGIDO ===== */
+
+/* Container principal das configurações */
+#configuracoes-section {
+    padding: 2rem;
+    max-width: 100%;
+    margin: 0;
+}
+
+.config-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Navegação lateral das configurações */
+.config-nav {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+    min-width: 250px;
+}
+
+.config-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.config-nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.config-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #666;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.config-nav-link:hover,
+.config-nav-item.active .config-nav-link {
+    background: #FC5A8D;
+    color: white;
+}
+
+.config-nav-link i {
+    width: 16px;
+    text-align: center;
+}
+
+/* Conteúdo das configurações */
+.config-content {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.config-panel {
+    display: none;
+    width: 100%;
+}
+
+.config-panel.active {
+    display: block;
+}
+
+.config-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.config-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.config-section h3 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.config-section h3 i {
+    color: #FC5A8D;
+    font-size: 1.1rem;
+}
+
+/* Formulários */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #FC5A8D;
+    box-shadow: 0 0 0 2px rgba(252, 90, 141, 0.1);
+}
+
+.form-group small {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* Toggle Switches */
+.toggle-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.5rem 0;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: #FC5A8D;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(26px);
+}
+
+.toggle-switch span:not(.toggle-slider) {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Horários de Funcionamento */
+.horarios-grid {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.horario-dia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    background: #f8f9fa;
+    min-height: 60px;
+}
+
+.horario-dia label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    min-width: 120px;
+}
+
+.horario-dia input[type="checkbox"] {
+    margin: 0;
+}
+
+.horario-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.horario-inputs input[type="time"] {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* Containers de listas */
+.feriados-container,
+.servicos-container,
+.destinatarios-container,
+.metricas-container {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.feriados-header,
+.servicos-header,
+.destinatarios-header,
+.metricas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.feriados-header h4,
+.servicos-header h4,
+.destinatarios-header h4,
+.metricas-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.feriados-list,
+.servicos-list,
+.destinatarios-list,
+.metricas-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.feriado-item,
+.servico-item,
+.destinatario-item,
+.metrica-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.3s ease;
+}
+
+.feriado-item:hover,
+.servico-item:hover,
+.destinatario-item:hover,
+.metrica-item:hover {
+    background-color: #f8f9fa;
+}
+
+.feriado-item:last-child,
+.servico-item:last-child,
+.destinatario-item:last-child,
+.metrica-item:last-child {
+    border-bottom: none;
+}
+
+.servico-info,
+.metrica-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.servico-info strong,
+.metrica-info strong {
+    font-weight: 600;
+    color: #333;
+}
+
+.servico-info span,
+.metrica-info span {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.servico-actions,
+.destinatario-actions,
+.metrica-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Export e Import */
+.export-options,
+.import-container {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.export-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.export-info h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.export-info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.export-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.import-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.import-item label {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Status e alertas */
+.backup-status {
+    background: #e8f5e8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    margin: 1rem 0;
+}
+
+.backup-status h4 {
+    margin: 0 0 0.75rem 0;
+    color: #155724;
+    font-weight: 600;
+}
+
+.status-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.status-info span {
+    font-size: 0.9rem;
+}
+
+.cleanup-options {
+    background: #fff3cd;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+    margin: 1rem 0;
+}
+
+.cleanup-actions {
+    margin-top: 1rem;
+}
+
+/* Permissions Grid */
+.permissions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.permission-group {
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.permission-group h4 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Relatórios */
+.relatorios-tipos {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.relatorio-tipo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.relatorio-info h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.relatorio-info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.relatorio-config {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.relatorios-manuais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+/* Botões de ação */
+.config-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .config-container {
+        grid-template-columns: 250px 1fr;
+        gap: 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    #configuracoes-section {
+        padding: 1rem;
+    }
+    
+    .config-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .config-nav {
+        position: static;
+        order: 2;
+        margin-top: 1rem;
+    }
+    
+    .config-nav-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    .config-content {
+        order: 1;
+        padding: 1.5rem;
+    }
+    
+    .permissions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .export-item,
+    .import-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .import-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .relatorios-manuais {
+        grid-template-columns: 1fr;
+    }
+    
+    .config-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .horario-dia {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+    
+    .horario-dia label {
+        min-width: auto;
+        justify-content: center;
+    }
+    
+    .feriado-item,
+    .servico-item,
+    .destinatario-item,
+    .metrica-item {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .relatorio-tipo {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .export-actions {
+        justify-content: center;
+    }
+    
+    .servico-actions,
+    .destinatario-actions,
+    .metrica-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    #configuracoes-section {
+        padding: 0.5rem;
+    }
+    
+    .config-content {
+        padding: 1rem;
+    }
+    
+    .config-nav {
+        padding: 1rem;
+    }
+    
+    .config-nav-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.5rem;
+    }
+    
+    .export-item,
+    .import-item,
+    .permission-group,
+    .relatorio-tipo {
+        padding: 1rem;
+    }
+}
+
+/* Correção específica para evitar sobreposição com sidebar */
+@media (min-width: 1025px) {
+    .config-container {
+        margin-left: 0;
+        padding-left: 0;
+    }
+    
+    .config-nav {
+        z-index: 1;
+    }
+    
+    .config-content {
+        z-index: 1;
+    }
+}
+
+/* Garantir que o conteúdo não fique atrás da sidebar */
+.dashboard-main .config-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ajuste para o header da seção */
+#configuracoes-section .section-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+#configuracoes-section .section-header h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#configuracoes-section .section-header p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+}
+

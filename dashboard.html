@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- CSS específico do dashboard -->
     <link rel="stylesheet" href="css/dashboard.css">
+        <link rel="stylesheet" href="css/dashboard/configuracao.css">
+
 </head>
 
 <body class="dashboard-page">
@@ -785,7 +787,1103 @@
             </div>
         </div>
     </div>
+<!-- Configurações -->
+<section id="configuracoes-section" class="content-section">
+    <div class="section-header">
+        <div>
+            <h1>Configurações</h1>
+            <p>Configure o sistema de acordo com suas necessidades</p>
+        </div>
+    </div>
 
+    <div class="config-container">
+        <!-- Navegação das configurações -->
+        <div class="config-nav">
+            <ul class="config-nav-list">
+                <li class="config-nav-item active">
+                    <a href="#config-geral" class="config-nav-link" data-config="geral">
+                        <i class="fas fa-cog"></i>
+                        <span>Geral</span>
+                    </a>
+                </li>
+                <li class="config-nav-item">
+                    <a href="#config-agendamento" class="config-nav-link" data-config="agendamento">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Agendamentos</span>
+                    </a>
+                </li>
+                <li class="config-nav-item">
+                    <a href="#config-backup" class="config-nav-link" data-config="backup">
+                        <i class="fas fa-database"></i>
+                        <span>Backup & Dados</span>
+                    </a>
+                </li>
+                <li class="config-nav-item">
+                    <a href="#config-seguranca" class="config-nav-link" data-config="seguranca">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Segurança</span>
+                    </a>
+                </li>
+                <li class="config-nav-item">
+                    <a href="#config-relatorios" class="config-nav-link" data-config="relatorios">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Conteúdo das configurações -->
+        <div class="config-content">
+            <!-- Configurações Gerais -->
+            <div id="config-geral" class="config-panel active">
+                <div class="config-section">
+                    <h3><i class="fas fa-building"></i> Informações da Empresa</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="empresa-nome">Nome da Empresa *</label>
+                            <input type="text" id="empresa-nome" value="NaturaVet" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa-cnpj">CNPJ</label>
+                            <input type="text" id="empresa-cnpj" placeholder="00.000.000/0000-00">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="empresa-telefone">Telefone Principal *</label>
+                            <input type="tel" id="empresa-telefone" value="(81) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa-telefone2">Telefone Secundário</label>
+                            <input type="tel" id="empresa-telefone2" placeholder="(81) 99999-9999">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="empresa-email">E-mail Principal *</label>
+                            <input type="email" id="empresa-email" value="contato@naturapet.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa-site">Website</label>
+                            <input type="url" id="empresa-site" value="https://naturapet.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa-endereco">Endereço Completo</label>
+                        <textarea id="empresa-endereco" rows="3">Rua das Flores, 123 - Centro, Recife - PE, CEP: 50000-000</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa-descricao">Descrição da Empresa</label>
+                        <textarea id="empresa-descricao" rows="3" placeholder="Breve descrição dos serviços oferecidos..."></textarea>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-globe"></i> Configurações Regionais</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="config-timezone">Fuso Horário</label>
+                            <select id="config-timezone">
+                                <option value="America/Sao_Paulo" selected>Brasília (UTC-3)</option>
+                                <option value="America/Manaus">Manaus (UTC-4)</option>
+                                <option value="America/Rio_Branco">Rio Branco (UTC-5)</option>
+                                <option value="America/Fortaleza">Fortaleza (UTC-3)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="config-idioma">Idioma do Sistema</label>
+                            <select id="config-idioma">
+                                <option value="pt-BR" selected>Português (Brasil)</option>
+                                <option value="en-US">English (US)</option>
+                                <option value="es-ES">Español</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="config-moeda">Moeda</label>
+                            <select id="config-moeda">
+                                <option value="BRL" selected>Real (R$)</option>
+                                <option value="USD">Dólar ($)</option>
+                                <option value="EUR">Euro (€)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="config-formato-data">Formato de Data</label>
+                            <select id="config-formato-data">
+                                <option value="dd/mm/yyyy" selected>DD/MM/AAAA</option>
+                                <option value="mm/dd/yyyy">MM/DD/AAAA</option>
+                                <option value="yyyy-mm-dd">AAAA-MM-DD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-envelope"></i> Configurações de E-mail</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="smtp-servidor">Servidor SMTP</label>
+                            <input type="text" id="smtp-servidor" placeholder="smtp.gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="smtp-porta">Porta SMTP</label>
+                            <input type="number" id="smtp-porta" value="587">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="smtp-usuario">Usuário SMTP</label>
+                            <input type="email" id="smtp-usuario" placeholder="seu-email@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="smtp-senha">Senha SMTP</label>
+                            <input type="password" id="smtp-senha" placeholder="Senha do e-mail">
+                        </div>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="smtp-ssl" checked>
+                            <span class="toggle-slider"></span>
+                            Usar SSL/TLS
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="email-teste">
+                            <span class="toggle-slider"></span>
+                            Modo de Teste (não enviar e-mails reais)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-image"></i> Logo e Identidade Visual</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="logo-upload">Logo da Empresa</label>
+                            <input type="file" id="logo-upload" accept="image/*">
+                            <small>Formatos aceitos: PNG, JPG, SVG (máx. 2MB)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="cor-primaria">Cor Primária</label>
+                            <input type="color" id="cor-primaria" value="#FC5A8D">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cor-secundaria">Cor Secundária</label>
+                            <input type="color" id="cor-secundaria" value="#E6FAE6">
+                        </div>
+                        <div class="form-group">
+                            <label for="favicon-upload">Favicon</label>
+                            <input type="file" id="favicon-upload" accept="image/*">
+                            <small>Formato ICO ou PNG 32x32px</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações de Agendamento -->
+            <div id="config-agendamento" class="config-panel">
+                <div class="config-section">
+                    <h3><i class="fas fa-clock"></i> Horários de Funcionamento</h3>
+                    <div class="horarios-grid">
+                        <div class="horario-dia">
+                            <label>
+                                <input type="checkbox" id="seg-ativo" checked> Segunda-feira
+                            </label>
+                            <div class="horario-inputs">
+                                <input type="time" id="seg-inicio" value="08:00"> às 
+                                <input type="time" id="seg-fim" value="18:00">
+                            </div>
+                        </div>
+                        <div class="horario-dia">
+                            <label>
+                                <input type="checkbox" id="ter-ativo" checked> Terça-feira
+                            </label>
+                            <div class="horario-inputs">
+                                <input type="time" id="ter-inicio" value="08:00"> às 
+                                <input type="time" id="ter-fim" value="18:00">
+                            </div>
+                        </div>
+                        <div class="horario-dia">
+                            <label>
+                                <input type="checkbox" id="qua-ativo" checked> Quarta-feira
+                            </label>
+                            <div class="horario-inputs">
+                                <input type="time" id="qua-inicio" value="08:00"> às 
+                                <input type="time" id="qua-fim" value="18:00">
+                            </div>
+                        </div>
+                        <div class="horario-dia">
+                            <label>
+                                <input type="checkbox" id="qui-ativo" checked> Quinta-feira
+                            </label>
+                            <div class="horario-inputs">
+                                <input type="time" id="qui-inicio" value="08:00"> às 
+                                <input type="time" id="qui-fim" value="18:00">
+                            </div>
+                        </div>
+                        <div class="horario-dia">
+                            <label>
+                                <input type="checkbox" id="sex-ativo" checked> Sexta-feira
+                            </label>
+                            <div class="horario-inputs">
+                                <input type="time" id="sex-inicio" value="08:00"> às 
+                                <input type="time" id="sex-fim" value="18:00">
+                            </div>
+                        </div>
+                        <div class="horario-dia">
+                            <label>
+                                <input type="checkbox" id="sab-ativo"> Sábado
+                            </label>
+                            <div class="horario-inputs">
+                                <input type="time" id="sab-inicio" value="08:00"> às 
+                                <input type="time" id="sab-fim" value="12:00">
+                            </div>
+                        </div>
+                        <div class="horario-dia">
+                            <label>
+                                <input type="checkbox" id="dom-ativo"> Domingo
+                            </label>
+                            <div class="horario-inputs">
+                                <input type="time" id="dom-inicio" value="08:00"> às 
+                                <input type="time" id="dom-fim" value="12:00">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-calendar-check"></i> Configurações de Consulta</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="duracao-consulta">Duração Padrão da Consulta</label>
+                            <select id="duracao-consulta">
+                                <option value="30">30 minutos</option>
+                                <option value="45">45 minutos</option>
+                                <option value="60" selected>1 hora</option>
+                                <option value="90">1h 30min</option>
+                                <option value="120">2 horas</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="intervalo-consulta">Intervalo entre Consultas</label>
+                            <select id="intervalo-consulta">
+                                <option value="0">Sem intervalo</option>
+                                <option value="15" selected>15 minutos</option>
+                                <option value="30">30 minutos</option>
+                                <option value="45">45 minutos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="limite-agendamentos">Limite de Agendamentos por Dia</label>
+                            <input type="number" id="limite-agendamentos" value="10" min="1" max="50">
+                        </div>
+                        <div class="form-group">
+                            <label for="antecedencia-minima">Antecedência Mínima (horas)</label>
+                            <input type="number" id="antecedencia-minima" value="24" min="1" max="168">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="antecedencia-maxima">Antecedência Máxima (dias)</label>
+                            <input type="number" id="antecedencia-maxima" value="90" min="1" max="365">
+                        </div>
+                        <div class="form-group">
+                            <label for="cancelamento-prazo">Prazo para Cancelamento (horas)</label>
+                            <input type="number" id="cancelamento-prazo" value="24" min="1" max="72">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-bell"></i> Notificações de Agendamento</h3>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-confirmacao" checked>
+                            <span class="toggle-slider"></span>
+                            Confirmação automática de agendamento
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-lembrete-24h" checked>
+                            <span class="toggle-slider"></span>
+                            Lembrete 24 horas antes
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-lembrete-2h">
+                            <span class="toggle-slider"></span>
+                            Lembrete 2 horas antes
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-cancelamento" checked>
+                            <span class="toggle-slider"></span>
+                            Notificação de cancelamento
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-reagendamento" checked>
+                            <span class="toggle-slider"></span>
+                            Notificação de reagendamento
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-calendar-times"></i> Feriados e Bloqueios</h3>
+                    <div class="feriados-container">
+                        <div class="feriados-header">
+                            <h4>Feriados Cadastrados</h4>
+                            <button class="btn btn-sm btn-primary" onclick="adicionarFeriado()">
+                                <i class="fas fa-plus"></i> Adicionar Feriado
+                            </button>
+                        </div>
+                        <div class="feriados-list" id="feriados-list">
+                            <div class="feriado-item">
+                                <span>01/01/2024 - Confraternização Universal</span>
+                                <button class="btn btn-sm btn-danger" onclick="removerFeriado(this)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <div class="feriado-item">
+                                <span>21/04/2024 - Tiradentes</span>
+                                <button class="btn btn-sm btn-danger" onclick="removerFeriado(this)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-list"></i> Tipos de Serviços</h3>
+                    <div class="servicos-container">
+                        <div class="servicos-header">
+                            <h4>Serviços Disponíveis</h4>
+                            <button class="btn btn-sm btn-primary" onclick="adicionarServico()">
+                                <i class="fas fa-plus"></i> Adicionar Serviço
+                            </button>
+                        </div>
+                        <div class="servicos-list" id="servicos-list">
+                            <div class="servico-item">
+                                <div class="servico-info">
+                                    <strong>Consulta Nutricional</strong>
+                                    <span>R$ 150,00 - 60 min</span>
+                                </div>
+                                <div class="servico-actions">
+                                    <button class="btn btn-sm btn-secondary" onclick="editarServico(this)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="removerServico(this)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="servico-item">
+                                <div class="servico-info">
+                                    <strong>Alimentação Natural</strong>
+                                    <span>R$ 200,00 - 90 min</span>
+                                </div>
+                                <div class="servico-actions">
+                                    <button class="btn btn-sm btn-secondary" onclick="editarServico(this)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="removerServico(this)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações de Backup -->
+            <div id="config-backup" class="config-panel">
+                <div class="config-section">
+                    <h3><i class="fas fa-save"></i> Backup Automático</h3>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="backup-automatico" checked>
+                            <span class="toggle-slider"></span>
+                            Ativar backup automático
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="backup-frequencia">Frequência do Backup</label>
+                            <select id="backup-frequencia">
+                                <option value="diario" selected>Diário</option>
+                                <option value="semanal">Semanal</option>
+                                <option value="mensal">Mensal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="backup-horario">Horário do Backup</label>
+                            <input type="time" id="backup-horario" value="02:00">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="backup-retencao">Retenção de Backups (dias)</label>
+                            <input type="number" id="backup-retencao" value="30" min="7" max="365">
+                        </div>
+                        <div class="form-group">
+                            <label for="backup-local">Local de Armazenamento</label>
+                            <select id="backup-local">
+                                <option value="local" selected>Armazenamento Local</option>
+                                <option value="google-drive">Google Drive</option>
+                                <option value="dropbox">Dropbox</option>
+                                <option value="aws-s3">Amazon S3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="backup-status">
+                        <h4>Status do Último Backup</h4>
+                        <div class="status-info">
+                            <span class="status-badge status-success">Sucesso</span>
+                            <span>Último backup: 15/12/2024 às 02:00</span>
+                            <span>Tamanho: 2.5 MB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-download"></i> Exportar Dados</h3>
+                    <div class="export-options">
+                        <div class="export-item">
+                            <div class="export-info">
+                                <h4>Clientes</h4>
+                                <p>Exportar dados de todos os clientes cadastrados</p>
+                            </div>
+                            <div class="export-actions">
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('clientes', 'excel')">
+                                    <i class="fas fa-file-excel"></i> Excel
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('clientes', 'pdf')">
+                                    <i class="fas fa-file-pdf"></i> PDF
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('clientes', 'csv')">
+                                    <i class="fas fa-file-csv"></i> CSV
+                                </button>
+                            </div>
+                        </div>
+                        <div class="export-item">
+                            <div class="export-info">
+                                <h4>Agendamentos</h4>
+                                <p>Exportar histórico de agendamentos</p>
+                            </div>
+                            <div class="export-actions">
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('agendamentos', 'excel')">
+                                    <i class="fas fa-file-excel"></i> Excel
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('agendamentos', 'pdf')">
+                                    <i class="fas fa-file-pdf"></i> PDF
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('agendamentos', 'csv')">
+                                    <i class="fas fa-file-csv"></i> CSV
+                                </button>
+                            </div>
+                        </div>
+                        <div class="export-item">
+                            <div class="export-info">
+                                <h4>Animais</h4>
+                                <p>Exportar dados de todos os animais cadastrados</p>
+                            </div>
+                            <div class="export-actions">
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('animais', 'excel')">
+                                    <i class="fas fa-file-excel"></i> Excel
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('animais', 'pdf')">
+                                    <i class="fas fa-file-pdf"></i> PDF
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="exportarDados('animais', 'csv')">
+                                    <i class="fas fa-file-csv"></i> CSV
+                                </button>
+                            </div>
+                        </div>
+                        <div class="export-item">
+                            <div class="export-info">
+                                <h4>Backup Completo</h4>
+                                <p>Exportar todos os dados do sistema</p>
+                            </div>
+                            <div class="export-actions">
+                                <button class="btn btn-primary" onclick="exportarDados('completo', 'json')">
+                                    <i class="fas fa-database"></i> Backup Completo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-upload"></i> Importar Dados</h3>
+                    <div class="import-container">
+                        <div class="import-item">
+                            <label for="import-clientes">Importar Clientes</label>
+                            <input type="file" id="import-clientes" accept=".csv,.xlsx,.json">
+                            <button class="btn btn-sm btn-primary" onclick="importarDados('clientes')">
+                                <i class="fas fa-upload"></i> Importar
+                            </button>
+                        </div>
+                        <div class="import-item">
+                            <label for="import-animais">Importar Animais</label>
+                            <input type="file" id="import-animais" accept=".csv,.xlsx,.json">
+                            <button class="btn btn-sm btn-primary" onclick="importarDados('animais')">
+                                <i class="fas fa-upload"></i> Importar
+                            </button>
+                        </div>
+                        <div class="import-item">
+                            <label for="import-backup">Restaurar Backup</label>
+                            <input type="file" id="import-backup" accept=".json">
+                            <button class="btn btn-sm btn-warning" onclick="restaurarBackup()">
+                                <i class="fas fa-undo"></i> Restaurar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-trash-alt"></i> Limpeza de Dados</h3>
+                    <div class="cleanup-options">
+                        <div class="toggle-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="limpeza-automatica" checked>
+                                <span class="toggle-slider"></span>
+                                Limpeza automática de dados antigos
+                            </label>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="retencao-agendamentos">Retenção de Agendamentos (meses)</label>
+                                <input type="number" id="retencao-agendamentos" value="24" min="6" max="60">
+                            </div>
+                            <div class="form-group">
+                                <label for="retencao-logs">Retenção de Logs (dias)</label>
+                                <input type="number" id="retencao-logs" value="90" min="30" max="365">
+                            </div>
+                        </div>
+                        <div class="cleanup-actions">
+                            <button class="btn btn-warning" onclick="executarLimpeza()">
+                                <i class="fas fa-broom"></i> Executar Limpeza Agora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações de Segurança -->
+            <div id="config-seguranca" class="config-panel">
+                <div class="config-section">
+                    <h3><i class="fas fa-key"></i> Política de Senhas</h3>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="senha-minimo-8" checked>
+                            <span class="toggle-slider"></span>
+                            Mínimo 8 caracteres
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="senha-maiuscula" checked>
+                            <span class="toggle-slider"></span>
+                            Incluir letras maiúsculas
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="senha-minuscula" checked>
+                            <span class="toggle-slider"></span>
+                            Incluir letras minúsculas
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="senha-numeros" checked>
+                            <span class="toggle-slider"></span>
+                            Incluir números
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="senha-simbolos">
+                            <span class="toggle-slider"></span>
+                            Incluir símbolos especiais
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="senha-validade">Validade da Senha (dias)</label>
+                            <input type="number" id="senha-validade" value="90" min="30" max="365">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha-historico">Histórico de Senhas</label>
+                            <input type="number" id="senha-historico" value="5" min="3" max="10">
+                            <small>Não permitir reutilizar as últimas N senhas</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-sign-in-alt"></i> Controle de Acesso</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sessao-tempo">Tempo de Sessão (minutos)</label>
+                            <select id="sessao-tempo">
+                                <option value="30">30 minutos</option>
+                                <option value="60" selected>1 hora</option>
+                                <option value="120">2 horas</option>
+                                <option value="240">4 horas</option>
+                                <option value="480">8 horas</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-tentativas">Tentativas de Login</label>
+                            <select id="login-tentativas">
+                                <option value="3" selected>3 tentativas</option>
+                                <option value="5">5 tentativas</option>
+                                <option value="10">10 tentativas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bloqueio-tempo">Tempo de Bloqueio (minutos)</label>
+                            <input type="number" id="bloqueio-tempo" value="15" min="5" max="60">
+                        </div>
+                        <div class="form-group">
+                            <label for="inatividade-logout">Logout por Inatividade (minutos)</label>
+                            <input type="number" id="inatividade-logout" value="30" min="10" max="120">
+                        </div>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="login-multiplo">
+                            <span class="toggle-slider"></span>
+                            Permitir múltiplos logins simultâneos
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="lembrar-login">
+                            <span class="toggle-slider"></span>
+                            Permitir "Lembrar de mim"
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-shield-virus"></i> Autenticação em Duas Etapas (2FA)</h3>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="2fa-obrigatorio">
+                            <span class="toggle-slider"></span>
+                            Tornar 2FA obrigatório para administradores
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="2fa-opcional" checked>
+                            <span class="toggle-slider"></span>
+                            Permitir 2FA opcional para outros usuários
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="2fa-metodo">Método de 2FA</label>
+                        <select id="2fa-metodo">
+                            <option value="email" selected>E-mail</option>
+                            <option value="sms">SMS</option>
+                            <option value="app">App Autenticador</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-history"></i> Log de Atividades</h3>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="log-login" checked>
+                            <span class="toggle-slider"></span>
+                            Registrar tentativas de login
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="log-acoes" checked>
+                            <span class="toggle-slider"></span>
+                            Registrar ações dos usuários
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="log-alteracoes" checked>
+                            <span class="toggle-slider"></span>
+                            Registrar alterações de dados
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="log-erros" checked>
+                            <span class="toggle-slider"></span>
+                            Registrar erros do sistema
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="log-nivel">Nível de Log</label>
+                        <select id="log-nivel">
+                            <option value="basico">Básico</option>
+                            <option value="detalhado" selected>Detalhado</option>
+                            <option value="completo">Completo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-user-shield"></i> Permissões de Usuário</h3>
+                    <div class="permissions-grid">
+                        <div class="permission-group">
+                            <h4>Administradores</h4>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                    Acesso total ao sistema
+                                </label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                    Gerenciar usuários
+                                </label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                    Configurações do sistema
+                                </label>
+                            </div>
+                        </div>
+                        <div class="permission-group">
+                            <h4>Escritores</h4>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="perm-escritor-criar" checked>
+                                    <span class="toggle-slider"></span>
+                                    Criar registros
+                                </label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="perm-escritor-editar" checked>
+                                    <span class="toggle-slider"></span>
+                                    Editar registros
+                                </label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="perm-escritor-excluir">
+                                    <span class="toggle-slider"></span>
+                                    Excluir registros
+                                </label>
+                            </div>
+                        </div>
+                        <div class="permission-group">
+                            <h4>Consultores</h4>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="perm-consultor-visualizar" checked>
+                                    <span class="toggle-slider"></span>
+                                    Visualizar dados
+                                </label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="perm-consultor-relatorios" checked>
+                                    <span class="toggle-slider"></span>
+                                    Gerar relatórios
+                                </label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="perm-consultor-exportar">
+                                    <span class="toggle-slider"></span>
+                                    Exportar dados
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações de Relatórios -->
+            <div id="config-relatorios" class="config-panel">
+                <div class="config-section">
+                    <h3><i class="fas fa-calendar-alt"></i> Relatórios Automáticos</h3>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="relatorio-automatico" checked>
+                            <span class="toggle-slider"></span>
+                            Ativar relatórios automáticos
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="relatorio-frequencia">Frequência dos Relatórios</label>
+                            <select id="relatorio-frequencia">
+                                <option value="diario">Diário</option>
+                                <option value="semanal" selected>Semanal</option>
+                                <option value="mensal">Mensal</option>
+                                <option value="trimestral">Trimestral</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="relatorio-dia">Dia de Envio</label>
+                            <select id="relatorio-dia">
+                                <option value="segunda" selected>Segunda-feira</option>
+                                <option value="terca">Terça-feira</option>
+                                <option value="quarta">Quarta-feira</option>
+                                <option value="quinta">Quinta-feira</option>
+                                <option value="sexta">Sexta-feira</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="relatorio-horario">Horário de Envio</label>
+                            <input type="time" id="relatorio-horario" value="08:00">
+                        </div>
+                        <div class="form-group">
+                            <label for="relatorio-formato">Formato do Relatório</label>
+                            <select id="relatorio-formato">
+                                <option value="pdf" selected>PDF</option>
+                                <option value="excel">Excel</option>
+                                <option value="html">HTML</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-envelope"></i> Destinatários dos Relatórios</h3>
+                    <div class="destinatarios-container">
+                        <div class="destinatarios-header">
+                            <h4>E-mails Cadastrados</h4>
+                            <button class="btn btn-sm btn-primary" onclick="adicionarDestinatario()">
+                                <i class="fas fa-plus"></i> Adicionar E-mail
+                            </button>
+                        </div>
+                        <div class="destinatarios-list" id="destinatarios-list">
+                            <div class="destinatario-item">
+                                <span>admin@naturapet.com</span>
+                                <div class="destinatario-actions">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <button class="btn btn-sm btn-danger" onclick="removerDestinatario(this)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="destinatario-item">
+                                <span>gerencia@naturapet.com</span>
+                                <div class="destinatario-actions">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <button class="btn btn-sm btn-danger" onclick="removerDestinatario(this)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-chart-line"></i> Tipos de Relatórios</h3>
+                    <div class="relatorios-tipos">
+                        <div class="relatorio-tipo">
+                            <div class="relatorio-info">
+                                <h4>Agendamentos</h4>
+                                <p>Relatório de agendamentos realizados, cancelados e pendentes</p>
+                            </div>
+                            <div class="relatorio-config">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="rel-agendamentos" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="btn btn-sm btn-secondary" onclick="configurarRelatorio('agendamentos')">
+                                    <i class="fas fa-cog"></i> Configurar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relatorio-tipo">
+                            <div class="relatorio-info">
+                                <h4>Clientes</h4>
+                                <p>Relatório de novos clientes, clientes ativos e inativos</p>
+                            </div>
+                            <div class="relatorio-config">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="rel-clientes" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="btn btn-sm btn-secondary" onclick="configurarRelatorio('clientes')">
+                                    <i class="fas fa-cog"></i> Configurar
+                                </button>
+                            </div>
+                        </div>                        <div class="relatorio-tipo">
+                            <div class="relatorio-info">
+                                <h4>Financeiro</h4>
+                                <p>Relatório de receitas, despesas e faturamento</p>
+                            </div>
+                            <div class="relatorio-config">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="rel-financeiro" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="btn btn-sm btn-secondary" onclick="configurarRelatorio('financeiro')">
+                                    <i class="fas fa-cog"></i> Configurar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relatorio-tipo">
+                            <div class="relatorio-info">
+                                <h4>Performance</h4>
+                                <p>Relatório de métricas de performance e produtividade</p>
+                            </div>
+                            <div class="relatorio-config">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="rel-performance">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="btn btn-sm btn-secondary" onclick="configurarRelatorio('performance')">
+                                    <i class="fas fa-cog"></i> Configurar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relatorio-tipo">
+                            <div class="relatorio-info">
+                                <h4>Animais</h4>
+                                <p>Relatório de animais cadastrados por tipo, raça e idade</p>
+                            </div>
+                            <div class="relatorio-config">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="rel-animais" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="btn btn-sm btn-secondary" onclick="configurarRelatorio('animais')">
+                                    <i class="fas fa-cog"></i> Configurar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-chart-pie"></i> Métricas Personalizadas</h3>
+                    <div class="metricas-container">
+                        <div class="metricas-header">
+                            <h4>Métricas Configuradas</h4>
+                            <button class="btn btn-sm btn-primary" onclick="adicionarMetrica()">
+                                <i class="fas fa-plus"></i> Nova Métrica
+                            </button>
+                        </div>
+                        <div class="metricas-list" id="metricas-list">
+                            <div class="metrica-item">
+                                <div class="metrica-info">
+                                    <strong>Taxa de Conversão</strong>
+                                    <span>Contatos que se tornaram clientes</span>
+                                </div>
+                                <div class="metrica-actions">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <button class="btn btn-sm btn-secondary" onclick="editarMetrica(this)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="removerMetrica(this)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="metrica-item">
+                                <div class="metrica-info">
+                                    <strong>Tempo Médio de Consulta</strong>
+                                    <span>Duração média das consultas realizadas</span>
+                                </div>
+                                <div class="metrica-actions">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <button class="btn btn-sm btn-secondary" onclick="editarMetrica(this)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="removerMetrica(this)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-filter"></i> Filtros de Relatórios</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="filtro-periodo">Período Padrão</label>
+                            <select id="filtro-periodo">
+                                <option value="7">Últimos 7 dias</option>
+                                <option value="30" selected>Últimos 30 dias</option>
+                                <option value="90">Últimos 3 meses</option>
+                                <option value="365">Último ano</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="filtro-status">Status Padrão</label>
+                            <select id="filtro-status">
+                                <option value="todos" selected>Todos</option>
+                                <option value="ativo">Apenas Ativos</option>
+                                <option value="inativo">Apenas Inativos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="filtro-detalhado" checked>
+                            <span class="toggle-slider"></span>
+                            Incluir detalhes completos
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="filtro-graficos" checked>
+                            <span class="toggle-slider"></span>
+                            Incluir gráficos
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="filtro-comparativo">
+                            <span class="toggle-slider"></span>
+                            Incluir comparativo com período anterior
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3><i class="fas fa-download"></i> Relatórios Manuais</h3>
+                    <div class="relatorios-manuais">
+                        <button class="btn btn-primary" onclick="gerarRelatorio('agendamentos')">
+                            <i class="fas fa-calendar"></i> Relatório de Agendamentos
+                        </button>
+                        <button class="btn btn-primary" onclick="gerarRelatorio('clientes')">
+                            <i class="fas fa-users"></i> Relatório de Clientes
+                        </button>
+                        <button class="btn btn-primary" onclick="gerarRelatorio('financeiro')">
+                            <i class="fas fa-dollar-sign"></i> Relatório Financeiro
+                        </button>
+                        <button class="btn btn-primary" onclick="gerarRelatorio('performance')">
+                            <i class="fas fa-chart-line"></i> Relatório de Performance
+                        </button>
+                        <button class="btn btn-success" onclick="gerarRelatorio('completo')">
+                            <i class="fas fa-file-alt"></i> Relatório Completo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botões de ação -->
+    <div class="config-actions">
+        <button class="btn btn-secondary" onclick="resetConfiguracoes()">
+            <i class="fas fa-undo"></i>
+            Restaurar Padrões
+        </button>
+        <button class="btn btn-warning" onclick="testarConfiguracoes()">
+            <i class="fas fa-vial"></i>
+            Testar Configurações
+        </button>
+        <button class="btn btn-primary" onclick="salvarConfiguracoes()">
+            <i class="fas fa-save"></i>
+            Salvar Configurações
+        </button>
+    </div>
+</section>
     <script src="js/login.js"></script>
     <script src="js/dashboard.js"></script>
     <script>
