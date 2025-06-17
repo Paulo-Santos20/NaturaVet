@@ -48,7 +48,7 @@ if (empty($_POST)) {
 
 // Configurações de email
 $destinatario = 'crossbrasil2018@gmail.com'; // ALTERE PARA SEU EMAIL REAL
-$assunto = 'Nova mensagem do site NutriPet';
+$assunto = 'Nova mensagem do site NaturaVet';
 
 // Validar e sanitizar dados
 $nome = isset($_POST['nome']) ? trim(filter_var($_POST['nome'], FILTER_SANITIZE_STRING)) : '';
@@ -93,7 +93,7 @@ if (!empty($erros)) {
 $conteudo = "
 <html>
 <head>
-    <title>Nova mensagem do site NutriPet</title>
+    <title>Nova mensagem do site NaturaVet</title>
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -108,7 +108,7 @@ $conteudo = "
 <body>
     <div class='container'>
         <div class='header'>
-            <h2>🐾 Nova Mensagem - NutriPet</h2>
+            <h2>🐾 Nova Mensagem - NaturaVet</h2>
         </div>
         <div class='content'>
             <div class='field'>
@@ -180,7 +180,7 @@ $conteudo .= "
             </div>
         </div>
         <div class='footer'>
-            <p>Esta mensagem foi enviada através do formulário de contato do site NutriPet</p>
+            <p>Esta mensagem foi enviada através do formulário de contato do site NaturaVet</p>
             <p>Para responder, utilize o email: " . htmlspecialchars($email) . "</p>
         </div>
     </div>
@@ -191,7 +191,7 @@ $conteudo .= "
 $headers = [
     'MIME-Version: 1.0',
     'Content-type: text/html; charset=UTF-8',
-    'From: Site NutriPet <noreply@nutripet.com>',
+    'From: Site NaturaVet <noreply@NaturaVet.com>',
     'Reply-To: ' . $email,
     'X-Mailer: PHP/' . phpversion(),
     'X-Priority: 1'

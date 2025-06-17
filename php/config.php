@@ -13,8 +13,8 @@ define('EMAIL_DESTINATARIO', 'crossbrasil2018@gmail.com');
 define('EMAIL_COPIA', ''); // Email para cópia (opcional)
 
 // Configurações gerais
-define('SITE_NAME', 'NutriPet');
-define('SITE_URL', 'https://nutripet.com');
+define('SITE_NAME', 'NaturaVet');
+define('SITE_URL', 'https://NaturaVet.com');
 
 // Configurações de segurança
 define('RATE_LIMIT_MINUTES', 5); // Limite de tempo entre envios

@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         // Salvar no localStorage
-        let contacts = JSON.parse(localStorage.getItem('nutripet_contacts') || '[]');
+        let contacts = JSON.parse(localStorage.getItem('NaturaVet_contacts') || '[]');
         contacts.push(contactData);
         
         // Manter apenas os últimos 50 contatos
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
             contacts = contacts.slice(-50);
         }
         
-        localStorage.setItem('nutripet_contacts', JSON.stringify(contacts));
+        localStorage.setItem('NaturaVet_contacts', JSON.stringify(contacts));
         
         console.log('💾 Contato salvo localmente:', contactData);
     }
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         // Montar mensagem do WhatsApp
-        let whatsappMessage = `🐾 *Contato via Site NutriPet*\n\n`;
+        let whatsappMessage = `🐾 *Contato via Site NaturaVet*\n\n`;
         whatsappMessage += `👤 *Nome:* ${nome}\n`;
         
         if (telefone) whatsappMessage += `📱 *Telefone:* ${telefone}\n`;
@@ -388,25 +388,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Funções utilitárias para administração (opcional)
 function viewSavedContacts() {
-    const contacts = JSON.parse(localStorage.getItem('nutripet_contacts') || '[]');
+    const contacts = JSON.parse(localStorage.getItem('NaturaVet_contacts') || '[]');
     console.table(contacts);
     return contacts;
 }
 
 function exportContacts() {
-    const contacts = JSON.parse(localStorage.getItem('nutripet_contacts') || '[]');
+    const contacts = JSON.parse(localStorage.getItem('NaturaVet_contacts') || '[]');
     const dataStr = JSON.stringify(contacts, null, 2);
     const dataBlob = new Blob([dataStr], {type: 'application/json'});
     
     const link = document.createElement('a');
     link.href = URL.createObjectURL(dataBlob);
-    link.download = `nutripet_contatos_${new Date().toISOString().split('T')[0]}.json`;
+    link.download = `NaturaVet_contatos_${new Date().toISOString().split('T')[0]}.json`;
     link.click();
 }
 
 function clearSavedContacts() {
     if (confirm('Tem certeza que deseja limpar todos os contatos salvos?')) {
-        localStorage.removeItem('nutripet_contacts');
+        localStorage.removeItem('NaturaVet_contacts');
         console.log('Contatos limpos!');
     }
 }

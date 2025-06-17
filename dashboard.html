@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dashboard administrativo - NutriPet">
-    <title>Dashboard - NutriPet</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <meta name="description" content="Dashboard administrativo - NaturaVet">
+    <title>Dashboard - NaturaVet</title>
+    <!-- Apenas as fontes e ícones, sem o style.css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- CSS específico do dashboard -->
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
+
 <body class="dashboard-page">
-    <!-- Header Dashboard -->
+    <!-- Header Dashboard (independente) -->
     <header class="dashboard-header">
-        <div class="container">
+        <div class="dashboard-container">
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-heart"></i>
-                    <span>NutriPet</span>
+                    <span>NaturaVet</span>
                     <span class="dashboard-label">Dashboard</span>
                 </div>
-                
+
                 <div class="header-actions">
                     <div class="user-info">
                         <div class="user-avatar">
@@ -33,9 +37,9 @@
                             <span class="user-role" id="userRole">...</span>
                         </div>
                     </div>
-                    
+
                     <div class="header-buttons">
-                        <a href="index.html" class="btn-site" >
+                        <a href="index.html" class="btn-site">
                             <i class="fas fa-external-link-alt"></i>
                             <span>Ver Site</span>
                         </a>
@@ -48,6 +52,11 @@
             </div>
         </div>
     </header>
+
+    <!-- Botão para mobile -->
+    <button class="mobile-sidebar-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <!-- Sidebar -->
     <aside class="dashboard-sidebar">
@@ -105,12 +114,14 @@
 
     <!-- Main Content -->
     <main class="dashboard-main">
-        <div class="container">
+        <div class="dashboard-container">
             <!-- Dashboard Overview -->
             <section id="dashboard-section" class="content-section active">
                 <div class="section-header">
-                    <h1>Dashboard</h1>
-                    <p>Visão geral do sistema NutriPet</p>
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Visão geral do sistema NaturaVet</p>
+                    </div>
                 </div>
 
                 <div class="stats-grid">
@@ -123,7 +134,7 @@
                             <p>Agendamentos Hoje</p>
                         </div>
                     </div>
-                    
+
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-users"></i>
@@ -133,7 +144,7 @@
                             <p>Clientes Ativos</p>
                         </div>
                     </div>
-                    
+
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-paw"></i>
@@ -143,7 +154,7 @@
                             <p>Animais Cadastrados</p>
                         </div>
                     </div>
-                    
+
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-envelope"></i>
@@ -155,6 +166,7 @@
                     </div>
                 </div>
 
+                <!-- Dashboard Widgets -->
                 <div class="dashboard-widgets">
                     <div class="widget">
                         <div class="widget-header">
@@ -165,7 +177,7 @@
                             <p class="no-data">Nenhum agendamento para hoje</p>
                         </div>
                     </div>
-                    
+
                     <div class="widget">
                         <div class="widget-header">
                             <h3>Mensagens Recentes</h3>
@@ -176,12 +188,51 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Calendário de Agendamentos -->
+                <div class="calendar-section">
+                    <div class="calendar-widget">
+                        <div class="widget-header">
+                            <h3>Calendário de Agendamentos</h3>
+                            <div class="calendar-nav">
+                                <button class="btn btn-sm btn-secondary" onclick="previousMonth()">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span id="calendar-month-year"></span>
+                                <button class="btn btn-sm btn-secondary" onclick="nextMonth()">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="calendar-container">
+                            <div class="calendar-grid" id="calendar-grid">
+                                <!-- Calendário será gerado dinamicamente -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-info-panel">
+                        <div class="day-info-header">
+                            <h3 id="selected-day-title">Selecione um dia</h3>
+                            <span id="selected-day-date" class="day-date"></span>
+                        </div>
+                        <div class="day-info-content" id="day-info-content">
+                            <div class="no-day-selected">
+                                <i class="fas fa-calendar-day"></i>
+                                <p>Clique em um dia do calendário para ver os agendamentos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Agendamentos -->
             <section id="agendamentos-section" class="content-section">
                 <div class="section-header">
-                    <h1>Agendamentos</h1>
+                    <div>
+                        <h1>Agendamentos</h1>
+                        <p>Gerencie todos os agendamentos</p>
+                    </div>
                     <div class="section-actions">
                         <button class="btn btn-primary" onclick="openModal('agendamento-modal')">
                             <i class="fas fa-plus"></i>
@@ -212,52 +263,54 @@
             </section>
 
             <!-- Clientes -->
-           <!-- Clientes -->
-<section id="clientes-section" class="content-section">
-    <div class="section-header">
-        <div>
-            <h1>Clientes</h1>
-            <p>Gerencie todos os clientes cadastrados</p>
-        </div>
-        <div class="section-actions">
-            <div class="search-box">
-                <input type="text" id="cliente-search" placeholder="Buscar cliente...">
-                <i class="fas fa-search"></i>
-            </div>
-            <button class="btn btn-primary" onclick="openClienteModal()">
-                <i class="fas fa-plus"></i>
-                Novo Cliente
-            </button>
-        </div>
-    </div>
+            <section id="clientes-section" class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h1>Clientes</h1>
+                        <p>Gerencie todos os clientes cadastrados</p>
+                    </div>
+                    <div class="section-actions">
+                        <div class="search-box">
+                            <input type="text" id="cliente-search" placeholder="Buscar cliente...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-primary" onclick="openClienteModal()">
+                            <i class="fas fa-plus"></i>
+                            Novo Cliente
+                        </button>
+                    </div>
+                </div>
 
-    <div class="table-container">
-        <table class="data-table" id="clientes-table">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Cidade</th>
-                    <th>Animais</th>
-                    <th>Status</th>
-                    <th>Cadastro</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="no-data-row">
-                    <td colspan="8">Nenhum cliente encontrado</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+                <div class="table-container">
+                    <table class="data-table" id="clientes-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Cidade</th>
+                                <th>Animais</th>
+                                <th>Status</th>
+                                <th>Cadastro</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="no-data-row">
+                                <td colspan="8">Nenhum cliente encontrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
             <!-- Animais -->
             <section id="animais-section" class="content-section">
                 <div class="section-header">
-                    <h1>Animais</h1>
+                    <div>
+                        <h1>Animais</h1>
+                        <p>Gerencie todos os animais cadastrados</p>
+                    </div>
                     <div class="section-actions">
                         <button class="btn btn-primary" onclick="openModal('animal-modal')">
                             <i class="fas fa-plus"></i>
@@ -290,7 +343,10 @@
             <!-- Contatos -->
             <section id="contatos-section" class="content-section">
                 <div class="section-header">
-                    <h1>Mensagens de Contato</h1>
+                    <div>
+                        <h1>Mensagens de Contato</h1>
+                        <p>Visualize todas as mensagens recebidas</p>
+                    </div>
                     <div class="section-actions">
                         <button class="btn btn-secondary" onclick="exportContacts()">
                             <i class="fas fa-download"></i>
@@ -315,6 +371,42 @@
                         <tbody>
                             <tr class="no-data-row">
                                 <td colspan="7">Nenhuma mensagem encontrada</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Usuários -->
+            <section id="usuarios-section" class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h1>Usuários</h1>
+                        <p>Gerencie todos os usuários do sistema</p>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-primary admin-only" onclick="openUsuarioModal()">
+                            <i class="fas fa-plus"></i>
+                            Novo Usuário
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" id="usuarios-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Tipo</th>
+                                <th>Status</th>
+                                <th>Cadastro</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="no-data-row">
+                                <td colspan="6">Nenhum usuário encontrado</td>
                             </tr>
                         </tbody>
                     </table>
@@ -388,164 +480,165 @@
     </div>
 
     <!-- Modal Cliente -->
-    <!-- Modal Cliente -->
-<div id="cliente-modal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="cliente-modal-title">Novo Cliente</h2>
-            <button class="modal-close" onclick="closeModal('cliente-modal')">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <form id="cliente-form" class="modal-form">
-            <input type="hidden" id="cliente-id" name="id">
-            
-            <!-- Informações Pessoais -->
-            <div class="form-section">
-                <h3><i class="fas fa-user"></i> Informações Pessoais</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cliente-nome">Nome Completo *</label>
-                        <input type="text" id="cliente-nome" name="nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cliente-cpf">CPF</label>
-                        <input type="text" id="cliente-cpf" name="cpf" placeholder="000.000.000-00">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cliente-nascimento">Data de Nascimento</label>
-                        <input type="date" id="cliente-nascimento" name="nascimento">
-                    </div>
-                    <div class="form-group">
-                        <label for="cliente-profissao">Profissão</label>
-                        <input type="text" id="cliente-profissao" name="profissao">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contato -->
-            <div class="form-section">
-                <h3><i class="fas fa-phone"></i> Contato</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cliente-email">E-mail *</label>
-                        <input type="email" id="cliente-email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cliente-telefone">Telefone *</label>
-                        <input type="tel" id="cliente-telefone" name="telefone" required placeholder="(00) 00000-0000">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="cliente-telefone2">Telefone Alternativo</label>
-                    <input type="tel" id="cliente-telefone2" name="telefone2" placeholder="(00) 00000-0000">
-                </div>
-            </div>
-
-            <!-- Endereço -->
-            <div class="form-section">
-                <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cliente-cep">CEP</label>
-                        <input type="text" id="cliente-cep" name="cep" placeholder="00000-000">
-                    </div>
-                    <div class="form-group">
-                        <label for="cliente-cidade">Cidade</label>
-                        <input type="text" id="cliente-cidade" name="cidade">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cliente-bairro">Bairro</label>
-                        <input type="text" id="cliente-bairro" name="bairro">
-                    </div>
-                    <div class="form-group">
-                        <label for="cliente-estado">Estado</label>
-                        <select id="cliente-estado" name="estado">
-                            <option value="">Selecione</option>
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="cliente-endereco">Rua/Avenida</label>
-                    <input type="text" id="cliente-endereco" name="endereco" placeholder="Rua, número, complemento">
-                </div>
-            </div>
-
-            <!-- Informações Adicionais -->
-            <div class="form-section">
-                <h3><i class="fas fa-clipboard"></i> Informações Adicionais</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cliente-como-conheceu">Como nos conheceu?</label>
-                        <select id="cliente-como-conheceu" name="como_conheceu">
-                            <option value="">Selecione</option>
-                            <option value="google">Google</option>
-                            <option value="instagram">Instagram</option>
-                            <option value="facebook">Facebook</option>
-                            <option value="indicacao">Indicação</option>
-                            <option value="veterinario">Veterinário</option>
-                            <option value="outros">Outros</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="cliente-status">Status</label>
-                        <select id="cliente-status" name="status">
-                            <option value="ativo">Ativo</option>
-                            <option value="inativo">Inativo</option>
-                            <option value="prospecto">Prospecto</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="cliente-observacoes">Observações</label>
-                    <textarea id="cliente-observacoes" name="observacoes" rows="3" placeholder="Informações importantes sobre o cliente..."></textarea>
-                </div>
-            </div>
-
-            <div class="modal-actions">
-                <button type="button" class="btn btn-secondary" onclick="closeModal('cliente-modal')">
+    <div id="cliente-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="cliente-modal-title">Novo Cliente</h2>
+                <button class="modal-close" onclick="closeModal('cliente-modal')">
                     <i class="fas fa-times"></i>
-                    Cancelar
-                </button>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i>
-                    <span id="cliente-btn-text">Salvar Cliente</span>
                 </button>
             </div>
-        </form>
+            <form id="cliente-form" class="modal-form">
+                <input type="hidden" id="cliente-id" name="id">
+
+                <!-- Informações Pessoais -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Informações Pessoais</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-nome">Nome Completo *</label>
+                            <input type="text" id="cliente-nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-cpf">CPF</label>
+                            <input type="text" id="cliente-cpf" name="cpf" placeholder="000.000.000-00">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-nascimento">Data de Nascimento</label>
+                            <input type="date" id="cliente-nascimento" name="nascimento">
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-profissao">Profissão</label>
+                            <input type="text" id="cliente-profissao" name="profissao">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contato -->
+                <div class="form-section">
+                    <h3><i class="fas fa-phone"></i> Contato</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-email">E-mail *</label>
+                            <input type="email" id="cliente-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-telefone">Telefone *</label>
+                            <input type="tel" id="cliente-telefone" name="telefone" required
+                                placeholder="(00) 00000-0000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-telefone2">Telefone Alternativo</label>
+                        <input type="tel" id="cliente-telefone2" name="telefone2" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+
+                <!-- Endereço -->
+                <div class="form-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-cep">CEP</label>
+                            <input type="text" id="cliente-cep" name="cep" placeholder="00000-000">
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-cidade">Cidade</label>
+                            <input type="text" id="cliente-cidade" name="cidade">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-bairro">Bairro</label>
+                            <input type="text" id="cliente-bairro" name="bairro">
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-estado">Estado</label>
+                            <select id="cliente-estado" name="estado">
+                                <option value="">Selecione</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-endereco">Rua/Avenida</label>
+                        <input type="text" id="cliente-endereco" name="endereco" placeholder="Rua, número, complemento">
+                    </div>
+                </div>
+
+                <!-- Informações Adicionais -->
+                <div class="form-section">
+                    <h3><i class="fas fa-clipboard"></i> Informações Adicionais</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-como-conheceu">Como nos conheceu?</label>
+                            <select id="cliente-como-conheceu" name="como_conheceu">
+                                <option value="">Selecione</option>
+                                <option value="google">Google</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="indicacao">Indicação</option>
+                                <option value="veterinario">Veterinário</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-status">Status</label>
+                            <select id="cliente-status" name="status">
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                                <option value="prospecto">Prospecto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-observacoes">Observações</label>
+                        <textarea id="cliente-observacoes" name="observacoes" rows="3"
+                            placeholder="Informações importantes sobre o cliente..."></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('cliente-modal')">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        <span id="cliente-btn-text">Salvar Cliente</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
     <!-- Modal Animal -->
     <div id="animal-modal" class="modal">
@@ -611,7 +704,110 @@
         </div>
     </div>
 
+    <!-- Modal Usuário -->
+    <div id="usuario-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="usuario-modal-title">Novo Usuário</h2>
+                <button class="modal-close" onclick="closeModal('usuario-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="usuario-form" class="modal-form">
+                <input type="hidden" id="usuario-id" name="id">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="usuario-nome">Nome Completo *</label>
+                        <input type="text" id="usuario-nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario-email">E-mail *</label>
+                        <input type="email" id="usuario-email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="usuario-senha">Senha *</label>
+                        <input type="password" id="usuario-senha" name="senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario-tipo">Tipo de Usuário *</label>
+                        <select id="usuario-tipo" name="tipo" required>
+                            <option value="">Selecione</option>
+                            <option value="admin">Administrador</option>
+                            <option value="escritor">Escritor</option>
+                            <option value="consultor">Consultor</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="usuario-status">Status</label>
+                    <select id="usuario-status" name="status">
+                        <option value="ativo">Ativo</option>
+                        <option value="inativo">Inativo</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('usuario-modal')">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        <span id="usuario-btn-text">Salvar Usuário</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Visualizar Contato -->
+    <div id="view-contato-modal" class="modal modal-overlay">
+        <div class="modal-content modal-view-contato">
+            <div class="modal-header">
+                <h2>Mensagem de Contato</h2>
+                <button class="modal-close" onclick="closeModal('view-contato-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="contato-details">
+                <!-- Conteúdo será preenchido dinamicamente -->
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('view-contato-modal')">
+                    <i class="fas fa-times"></i>
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/login.js"></script>
     <script src="js/dashboard.js"></script>
+    <script>
+        // Função para toggle da sidebar no mobile
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.dashboard-sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Fechar sidebar ao clicar fora (mobile)
+        document.addEventListener('click', function (e) {
+            const sidebar = document.querySelector('.dashboard-sidebar');
+            const toggleBtn = document.querySelector('.mobile-sidebar-toggle');
+
+            if (window.innerWidth <= 1024 &&
+                !sidebar.contains(e.target) &&
+                !toggleBtn.contains(e.target) &&
+                sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
 </body>
+
 </html>

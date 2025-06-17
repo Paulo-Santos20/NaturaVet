@@ -9,19 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Contas de usuário (em produção, isso viria de um banco de dados)
     const users = {
-        'admin@nutripet.com': {
+        'admin@NaturaVet.com': {
             password: 'admin123',
             role: 'admin',
             name: 'Administrador',
             permissions: ['read', 'write', 'delete', 'manage_users']
         },
-        'consultor@nutripet.com': {
+        'consultor@NaturaVet.com': {
             password: 'consultor123',
             role: 'consultor',
             name: 'Consultor',
             permissions: ['read']
         },
-        'escritor@nutripet.com': {
+        'escritor@NaturaVet.com': {
             password: 'escritor123',
             role: 'escritor',
             name: 'Escritor',
@@ -108,10 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Salvar no localStorage
                 if (remember) {
-                    localStorage.setItem('nutripet_user', JSON.stringify(userData));
-                    localStorage.setItem('nutripet_remember', 'true');
+                    localStorage.setItem('NaturaVet_user', JSON.stringify(userData));
+                    localStorage.setItem('NaturaVet_remember', 'true');
                 } else {
-                    sessionStorage.setItem('nutripet_user', JSON.stringify(userData));
+                    sessionStorage.setItem('NaturaVet_user', JSON.stringify(userData));
                 }
                 
                 showMessage('Login realizado com sucesso! Redirecionando...', 'success');
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Verificar se já está logado
-    const savedUser = localStorage.getItem('nutripet_user') || sessionStorage.getItem('nutripet_user');
+    const savedUser = localStorage.getItem('NaturaVet_user') || sessionStorage.getItem('NaturaVet_user');
     if (savedUser) {
         const userData = JSON.parse(savedUser);
         showMessage(`Bem-vindo de volta, ${userData.name}! Redirecionando...`, 'success');
@@ -169,21 +169,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Função global para logout (pode ser usada em outras páginas)
 function logout() {
-    localStorage.removeItem('nutripet_user');
-    localStorage.removeItem('nutripet_remember');
-    sessionStorage.removeItem('nutripet_user');
+    localStorage.removeItem('NaturaVet_user');
+    localStorage.removeItem('NaturaVet_remember');
+    sessionStorage.removeItem('NaturaVet_user');
     
     window.location.href = 'login.html';
 }
 
 // Função para verificar se está logado (pode ser usada em outras páginas)
 function isLoggedIn() {
-    return localStorage.getItem('nutripet_user') || sessionStorage.getItem('nutripet_user');
+    return localStorage.getItem('NaturaVet_user') || sessionStorage.getItem('NaturaVet_user');
 }
 
 // Função para obter dados do usuário logado
 function getCurrentUser() {
-    const userData = localStorage.getItem('nutripet_user') || sessionStorage.getItem('nutripet_user');
+    const userData = localStorage.getItem('NaturaVet_user') || sessionStorage.getItem('NaturaVet_user');
     return userData ? JSON.parse(userData) : null;
 }
 
@@ -191,4 +191,44 @@ function getCurrentUser() {
 function hasPermission(permission) {
     const user = getCurrentUser();
     return user && user.permissions.includes(permission);
+}
+
+// No login.js, atualize a função validateLogin:
+function validateLogin(email, password) {
+    // Carregar usuários do localStorage com a chave correta
+    const savedUsuarios = localStorage.getItem('NaturaVet_usuarios'); // Mudança aqui
+    let usuarios = [];
+    
+    if (savedUsuarios) {
+        usuarios = JSON.parse(savedUsuarios);
+    } else {
+        // Usuários padrão se não houver dados salvos
+        usuarios = [
+            {
+                id: 1,
+                nome: 'Administrador',
+                email: 'admin@NaturaVet.com', // Mudança aqui
+                senha: 'admin123',
+                tipo: 'admin',
+                status: 'ativo'
+            }
+        ];
+        localStorage.setItem('NaturaVet_usuarios', JSON.stringify(usuarios)); // Mudança aqui
+    }
+    
+    const user = usuarios.find(u => 
+        u.email === email && 
+        u.senha === password && 
+        u.status === 'ativo'
+    );
+    
+    if (user) {
+        return {
+            name: user.nome,
+            email: user.email,
+            role: user.tipo
+        };
+    }
+    
+    return null;
 }
