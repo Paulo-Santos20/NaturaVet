@@ -2,9 +2,10 @@
 
 /* Container principal das configurações */
 #configuracoes-section {
+    margin-left: 100px;
     padding: 2rem;
-    max-width: 100%;
-    margin: 0;
+    min-height: calc(100vh - 80px);
+    flex: 1;       
 }
 
 .config-container {
@@ -15,7 +16,6 @@
     max-width: 100%;
     width: 100%;
 }
-
 /* Navegação lateral das configurações */
 .config-nav {
     background: white;

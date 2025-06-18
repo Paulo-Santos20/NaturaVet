@@ -172,8 +172,8 @@ body {
 .dashboard-sidebar {
     position: fixed;
     left: 0;
-    top: 80px;
-    width: 280px;
+    top: 75px;
+    width: 130px;
     height: calc(100vh - 80px);
     background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
     box-shadow: 3px 0 15px rgba(0, 0, 0, 0.1);
@@ -183,7 +183,7 @@ body {
 }
 
 .dashboard-main {
-    margin-left: 280px;
+    margin-left: 100px;
     padding: 2rem;
     min-height: calc(100vh - 80px);
     flex: 1;
@@ -210,7 +210,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 1rem 1.5rem;
+    padding: 1rem .1rem;
     color: #666;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -254,7 +254,7 @@ body {
 }
 
 .nav-link span {
-    font-size: 0.85rem;
+    font-size: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
     white-space: nowrap;
